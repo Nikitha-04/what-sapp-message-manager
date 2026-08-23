@@ -1,0 +1,16 @@
+*.iml
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+app/build/
+gradle-bin/
+gradle-bin-810/
+jdk17/
+jdk17.zip
+gradle.zip
+gradle-8.10.zip
