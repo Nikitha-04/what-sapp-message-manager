@@ -1,124 +1,40 @@
-# WAImportant ??
+Ôªø# üì± WA Important - Smart WhatsApp Message Manager
 
-> **Never miss a message that truly matters.**
+> **Never miss what truly matters in the noise of endless notifications.** 
+> *Built for productivity and peace of mind.*
 
----
+## üöÄ The Problem
+In today's fast-paced world, our WhatsApp and WhatsApp Business accounts are flooded with hundreds of messages daily. From casual chats and group notifications to promotional spam, the sheer volume of noise makes it incredibly easy to miss the messages that actually matter‚Äîlike an urgent text from a boss, a request from family, or critical keywords like "payment" or "urgent".
 
-## The Problem
+## üí° The Solution
+**WA Important** is a lightweight, privacy-first Android application that acts as a smart filter for your WhatsApp notifications. By securely listening to incoming messages, it categorizes them in real-time based on customizable, user-defined rules. 
 
-WhatsApp is one of the most used messaging apps in the world ó but it treats every message equally.
-A "okay ??" from a random group and an urgent message from your doctor land in the same inbox, with the same notification, demanding the same attention.
+Instead of opening WhatsApp to a sea of unread chats, open **WA Important** to see exactly what needs your immediate attention.
 
-Most of us are part of **dozens of groups** ó family, friends, work, communities ó and our notification shade is a flood. Genuinely important messages get buried. We scroll back. We miss things. We reply too late.
+## ‚ú® Key Features
+- **üîî Live Message Capture**: Instantly reads and logs incoming messages from both **WhatsApp** and **WhatsApp Business**.
+- **‚≠ê Smart Importance Filtering**: Create powerful filter rules combining **Sender Name** and **Keywords**. 
+  - *Example 1:* Flag all messages from "Mom".
+  - *Example 2:* Flag any message containing the word "urgent".
+  - *Example 3:* Flag messages from "Boss" containing "meeting".
+- **üóÇÔ∏è Dual-Tab UI**: A clean, intuitive Jetpack Compose interface allowing seamless switching between "All Messages" and "‚≠ê Important" messages.
+- **üíæ Persistent Rules**: Your customized filtering rules are securely saved on the device and survive app restarts.
+- **üîí Privacy First**: 100% offline and local. No messages or personal data are ever sent to the cloud or third-party servers.
 
-On top of this, **OEM Android devices** (especially from brands like vivo, iQOO, Xiaomi, and OnePlus) aggressively kill background apps and services to save battery. If a traditional listener app isn't on their whitelist, it simply stops working silently ó and you never know what you missed.
+## üõ†Ô∏è Technical Implementation
+- **Language**: Kotlin 
+- **UI Framework**: Jetpack Compose (Material Design 3)
+- **Architecture**: 
+  - `NotificationListenerService` for seamless, low-overhead background interception of system notifications.
+  - Reactive UI using `StateFlow` and Coroutines for instant screen updates without manual refreshing.
+  - Efficient file-based local storage (`JSONObject` / `JSONArray`) for rule persistence.
+- **Compatibility**: Android 8.0 (API 26) to Android 14 (API 34).
 
----
-
-## Our Ideology
-
-**WAImportant** is built on a simple belief:
-
-> Your attention is finite. Your phone should protect it.
-
-We don't want to replace WhatsApp. We don't want to read your messages for you.
-We want to act like a **smart filter layer** ó sitting quietly in the background, watching what comes in, and surfacing only what genuinely needs your attention.
-
-The intelligence is local. No messages ever leave your device. No cloud. No servers. No accounts.
-
----
-
-## What We Are Solving
-
-| Problem | Our Approach |
-|--------|--------------|
-| Too many notifications, hard to find urgent ones | Score every incoming WhatsApp message using configurable rules |
-| Important messages buried in group chats | Detect group vs. direct messages and weight them differently |
-| OEM devices killing background listener services | Foreground service with persistent notification keeps the listener alive |
-| Privacy concerns with message-reading apps | 100% on-device processing ó no data leaves your phone |
-| One-size-fits-all notification systems | User-defined rules: keywords, senders, time-of-day sensitivity |
+## üöÄ Getting Started
+1. Install the APK on your Android device.
+2. Grant **Notification Access** when prompted by the app.
+3. Tap the **‚öô (Settings) icon** to configure your Important Filter rules.
+4. Sit back and let WA Important curate your notifications!
 
 ---
-
-## How It Works
-
-```
-WhatsApp Notification
-        ?
-WaNotificationListener (NotificationListenerService)
-        ?
-   Message Parsing
-   (sender, text, group vs DM, timestamp)
-        ?
-   Scoring Engine (com.waimportant.rules)
-   ? keyword matching
-   ? sender priority
-   ? group vs direct weight
-        ?
-   ScoredMessage
-   ? isImportant: true/false
-   ? reason: why it was flagged
-        ?
-   [Future] Heads-up alert / summary notification
-```
-
----
-
-## Project Structure
-
-```
-com.waimportant
-+-- data/
-¶   +-- WhatsAppMessage.kt     # Core message model
-¶   +-- ScoredMessage.kt       # Scored output model
-+-- rules/                     # Scoring logic (coming soon)
-+-- ui/                        # UI screens (coming soon)
-+-- WaNotificationListener.kt  # Notification listener + foreground service
-```
-
----
-
-## Tech Stack
-
-- **Language:** Kotlin
-- **UI:** Jetpack Compose (ready, not yet wired)
-- **Database:** Room + KSP (ready, not yet wired)
-- **Async:** Kotlin Coroutines
-- **Min SDK:** 26 (Android 8.0+)
-- **Target SDK:** 34 (Android 14)
-
----
-
-## Current Status
-
-- [x] Project scaffold with Jetpack Compose + Room + KSP
-- [x] `WhatsAppMessage` and `ScoredMessage` data models
-- [x] `WaNotificationListener` ó captures all incoming WhatsApp notifications
-- [x] Parses both grouped (`EXTRA_MESSAGES`) and single (`EXTRA_TITLE/TEXT`) notifications
-- [x] Foreground service wrapper to survive aggressive OEM battery management
-- [x] Logcat output (`WA_CAPTURE` tag) for real-time message inspection
-- [ ] Scoring / rules engine
-- [ ] Room database persistence
-- [ ] UI to view flagged messages
-- [ ] vivo/iQOO autostart + whitelist deep-link guidance
-
----
-
-## Privacy First
-
-WAImportant **never**:
-- Uploads your messages to any server
-- Requires a login or account
-- Shares data with third parties
-
-It reads notification content the same way your smartwatch or Bluetooth headset does ó using Android's standard `NotificationListenerService` API.
-
----
-
-## Contributors
-
-- [@Nikitha-04](https://github.com/Nikitha-04)
-
----
-
-*Built with ?? for people who are tired of missing the messages that matter.*
+*Built with ‚ù§Ô∏è to bring focus back to your digital life.*
